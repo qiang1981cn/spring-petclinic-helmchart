@@ -1,0 +1,70 @@
+﻿apiVersion: v1
+items:
+- apiVersion: neuvector.com/v1
+  kind: NvSecurityRule
+  metadata:
+    name: nv.spring-petclinic.default
+    namespace: default
+  spec:
+    dlp:
+      settings: []
+      status: true
+    egress: []
+    file: []
+    ingress:
+    - action: allow
+      applications:
+      - HTTP
+      name: nv.spring-petclinic.default-ingress-0
+      ports: any
+      priority: 0
+      selector:
+        comment: ""
+        criteria: []
+        name: nodes
+        original_name: ""
+    process:
+    - action: allow
+      allow_update: false
+      name: bash
+      path: /usr/bin/bash
+    - action: allow
+      allow_update: false
+      name: java
+      path: /usr/lib64/jvm/java-11-openjdk-11/bin/java
+    - action: allow
+      allow_update: false
+      name: ls
+      path: /usr/bin/ls
+    - action: allow
+      allow_update: false
+      name: pause
+      path: /pause
+    - action: allow
+      allow_update: false
+      name: script
+      path: /usr/bin/script
+    - action: allow
+      allow_update: false
+      name: sh
+      path: /usr/bin/bash
+    process_profile:
+      baseline: basic
+    target:
+      policymode: Protect
+      selector:
+        comment: ""
+        criteria:
+        - key: service
+          op: =
+          value: spring-petclinic.default
+        - key: domain
+          op: =
+          value: default
+        name: nv.spring-petclinic.default
+        original_name: ""
+    waf:
+      settings: []
+      status: true
+kind: List
+metadata: null
