@@ -34,8 +34,8 @@ items:
       path: /usr/lib64/jvm/java-11-openjdk-11/bin/java
     - action: allow
       allow_update: false
-      name: cat
-      path: /usr/bin/cat
+      name: ls
+      path: /usr/bin/ls
     - action: allow
       allow_update: false
       name: pause
